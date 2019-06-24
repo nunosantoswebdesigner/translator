@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>google translate whit flags</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <style>
+    .lang_container { display: flex; }
+    .lang_container .lang_item { margin: 5px; overflow: hidden;}
+    .lang_container .lang_item .lang-en { background: url('flags/flag-englaterra.svg') }
+    .lang_container .lang_item .lang-pt { background: url('flags/flag-portugal.svg') }
+    .lang_container .lang_item .lang-es { background: url('flags/flag-espanha.svg') }
+    .lang_container .lang_item .lang-fr { background: url('flags/flag-franca.svg') }
+    .lang_container .lang_item .lang-de { background: url('flags/flag-alemanha.svg') }
+    .lang_container .lang_item .lang-select {
+        display: block;
+        width: 25px;
+        height: 15px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    </style>
+</head>
+<body>
+    <div class="lang_container">
+        <div class="lang_item"><a href="#googtrans(en|en)" class="lang-en lang-select" data-lang="en"></a></div>
+        <div class="lang_item"><a href="#googtrans(en|pt)" class="lang-pt lang-select" data-lang="pt"></a></div>
+        <div class="lang_item"><a href="#googtrans(en|es)" class="lang-es lang-select" data-lang="es"></a></div>
+        <div class="lang_item"><a href="#googtrans(en|fr)" class="lang-fr lang-select" data-lang="fr"></a></div>
+        <div class="lang_item"><a href="#googtrans(en|de)" class="lang-de lang-select" data-lang="de"></a></div>
+    </div>
+    <p> The bee-eaters are a group of near passerine birds in the family Meropidae, containing three genera and
+        twenty-seven species. Most species are found in Africa and Asia, with a few in southern Europe, Australia
+        and New Guinea. They are characterised by richly coloured plumage, slender bodies and usually elongated
+        central tail feathers. All have long down-turned bills and medium to long wings, which may be pointed or
+        round. Male and female plumages are usually similar. As their name suggests, bee-eaters predominantly eat
+        flying insects, especially bees and wasps, which are caught in the air by flights from an open perch. The
+        stinger is removed by repeatedly hitting and rubbing the insect on a hard surface. During this process,
+        pressure is applied to the insect, thereby extracting most of the venom.
+        This composite, taken in 2016, shows six bee-eaters of the genus Merops found in Africa. Clockwise from top
+        left, the species depicted are the blue-cheeked bee-eater (M. persicus chrysocercus), the cinnamon-chested
+        bee-eater (M. oreobates), the little bee-eater (M. pusillus pusillus), the white-throated bee-eater (M.
+        albicollis), the swallow-tailed bee-eater (M. hirundineus chrysolaimus) and the European bee-eater (M.
+        apiaster).
+        Photograph credit: Charles J. Sharp
+    </p>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                layout: google.translate.TranslateElement.FloatPosition.TOP_LEFT
+            }, 'google_translate_element');
+        }
+
+        function triggerHtmlEvent(element, eventName) {
+            var event;
+            if (document.createEvent) {
+                event = document.createEvent('HTMLEvents');
+                event.initEvent(eventName, true, true);
+                element.dispatchEvent(event);
+            } else {
+                event = document.createEventObject();
+                event.eventType = eventName;
+                element.fireEvent('on' + event.eventType, event);
+            }
+        }
+
+        jQuery('.lang-select').click(function () {
+            var theLang = jQuery(this).attr('data-lang');
+            jQuery('.goog-te-combo').val(theLang);
+            window.location = jQuery(this).attr('href');
+            location.reload();
+        });
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+
+</html>
